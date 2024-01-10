@@ -1,0 +1,19 @@
+{
+  "name": "niyobertin-developer-management-system",
+  "version": "1.0.0",
+  "description": "This is the app that will be allowing to register, to update, to fetch and to delete a developer account.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Niyonkuru Bertin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mogodb": "^0.0.1-security",
+    "mongoose": "^8.0.4"
+  }
+}
