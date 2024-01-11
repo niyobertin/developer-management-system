@@ -40,27 +40,30 @@ router.get('/developers/:id',async(req,res) =>{
 });
 //updating  a developer
 router.patch('/developers/update/:id',async(req,res) =>{
+    const _id = req.params.id;
+    const {first_name,second_name,gender,email,specification} = req.body;
     try{
-        const _id = req.params.id;
-        const body = req.body;
-        const updateDeveloper = await developers.findOne({_id});
-       if(body.first_name){
-        updateDeveloper.first_name = body.first_name
-       }
-       if(body.second_name){
-        updateDeveloper.second_name = body.second_name
-       }
-       if(body.gender){
-       updateDeveloper.gender = body.gender;
-       }
-       if(body.email){
-        updateDeveloper.email = body.email;
-       }
-       if(body.specification){
-        updateDeveloper.specification = body.specification;
-       }
-       await updateDeveloper.save();
-       res.send(updateDeveloper);
+        
+            const _id = req.params.id;
+            const body = req.body;
+            const updateDeveloper = await developers.findOne({_id});
+        if(body.first_name){
+            updateDeveloper.first_name = body.first_name
+        }
+        if(body.second_name){
+            updateDeveloper.second_name = body.second_name
+        }
+        if(body.gender){
+        updateDeveloper.gender = body.gender;
+        }
+        if(body.email){
+            updateDeveloper.email = body.email;
+        }
+        if(body.specification){
+            updateDeveloper.specification = body.specification;
+        }
+        await updateDeveloper.save();
+        res.send(updateDeveloper);
     }catch{
         res.status(404);
         res.send({ error: "Developer doesn't exist!" })
