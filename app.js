@@ -4,7 +4,7 @@ import routes from "./src/rout/index.js";
 const app = express();
 db();
 app.use(express.json());
-app.use("/developer",routes)
+app.use("/api",routes)
 app.get("/developer",(req,res) => {
     res.send("this is the first method.")
 })
