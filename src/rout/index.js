@@ -2,7 +2,7 @@ import express from "express";
 import developers from "../module/module.js";
 const router = express.Router();
 //creating a new developer
-router.post("/developer",async(req,res) =>{
+router.post("/developers/posts",async(req,res) =>{
     const develop = new developers({
         first_name:req.body.first_name,
         second_name:req.body.second_name,
@@ -41,7 +41,6 @@ router.get('/developers/:id',async(req,res) =>{
 //updating  a developer
 router.patch('/developers/update/:id',async(req,res) =>{
     const _id = req.params.id;
-    const {first_name,second_name,gender,email,specification} = req.body;
     try{
         
             const _id = req.params.id;
@@ -71,7 +70,7 @@ router.patch('/developers/update/:id',async(req,res) =>{
 });
 //deleting a single developer
 router.delete('/developers/delete/:id', async (req, res) => {
-    const id =req.params.id;
+    const id =req.params._id;
     try {
         await developers.deleteOne(id)
         res.send("Developer removed !!")
