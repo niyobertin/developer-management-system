@@ -1,18 +1,14 @@
 import mongoose from "mongoose";
-//connecting database with express app
+//connecting database with express server
 const url = 'mongodb://127.0.0.1/edeveloper-profile';
+
   const connectDb = async () =>{
-try{
+    try{
     mongoose.set("strictQuery", false);
     mongoose.connect(url)
     console.log("Connection successifully")
-}catch (err){
+}catch(err){
 console.log(err);
 }
   }
-   
-
-
-
-
 export default connectDb;

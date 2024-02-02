@@ -1,6 +1,6 @@
 import  express  from "express";
 import db from './src/connection/config.js';
-import routes from "./src/rout/index.js";
+import routes from "./src/rout/routes.js";
 const app = express();
 db();
 app.use(express.json());

@@ -1,8 +1,6 @@
-import express from "express";
 import developers from "../module/module.js";
-const router = express.Router();
-//creating a new developer
-router.post("/developers/posts",async(req,res) =>{
+//post request
+const createDeveloper = async(req,res) =>{
     const develop = new developers({
         first_name:req.body.first_name,
         second_name:req.body.second_name,
@@ -12,9 +10,10 @@ router.post("/developers/posts",async(req,res) =>{
     })
     await develop.save();
     res.send(develop)
-});
-//Getting Developers from db
-router.get("/developers",async(req,res) =>{
+}
+
+//Get request
+const getAllDeveloper = async(req,res) =>{
     try{
     const retrieves = await developers.find();
     if(!retrieves){
@@ -24,9 +23,9 @@ router.get("/developers",async(req,res) =>{
 }catch{
     res.status(404);
 }
-});
+}
 //Getting single developer
-router.get('/developers/:id',async(req,res) =>{
+const getADeveloper = async(req,res) =>{
     try{
     const _id = req.params.id;
     const retrieve = await developers.findOne({_id});
@@ -37,9 +36,9 @@ router.get('/developers/:id',async(req,res) =>{
     }catch{
         res.status(404);
     }
-});
-//updating  a developer
-router.patch('/developers/update/:id',async(req,res) =>{
+}
+//pactch/update request 
+const updateDeveloper = async(req,res) =>{
     const _id = req.params.id;
     try{
         
@@ -67,9 +66,10 @@ router.patch('/developers/update/:id',async(req,res) =>{
         res.status(404);
         res.send({ error: "Developer doesn't exist!" })
     }
-});
-//deleting a single developer
-router.delete('/developers/delete/:id', async (req, res) => {
+}
+//Delete request
+
+const removeDeveloper = async (req, res) => {
     const id =req.params._id;
     try {
         await developers.deleteOne(id)
@@ -78,6 +78,11 @@ router.delete('/developers/delete/:id', async (req, res) => {
         res.status(404)
         res.send({ error: "developer doesn't exist!" })
     }
-})
-
-export default router;
+}
+export default {
+    createDeveloper,
+    getAllDeveloper,
+    getADeveloper,
+    updateDeveloper,
+    removeDeveloper
+}
