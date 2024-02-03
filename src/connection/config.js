@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 //connecting database with express server
-const url = 'mongodb://127.0.0.1/edeveloper-profile';
+const url = 'mongodb://127.0.0.1/developer-profile';
 
   const connectDb = async () =>{
     try{
